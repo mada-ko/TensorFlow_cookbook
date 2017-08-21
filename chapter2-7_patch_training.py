@@ -1,4 +1,4 @@
-import matplotlib as plt
+from matplotlib import pyplot as plt
 import numpy as np
 import tensorflow as tf
 
@@ -32,4 +32,8 @@ for i in range(100):
         print('Step #' + str(i+1) + ' A = ' + str(sess.run(A)))
         temp_loss = sess.run(loss, feed_dict={x_data: rand_x, y_target: rand_y})
         print('Loss = ' + str(temp_loss))
-        
+        loss_batch.append(temp_loss)
+
+plt.plot(range(0, 100, 5), loss_batch, 'r--', label='Batch Loss, size=20')
+plt.legend(loc='upper right', prop={'size': 11})
+plt.show()
